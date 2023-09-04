@@ -1,0 +1,114 @@
+/* width - ширина */
+/* height -высота */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 15px;
+  column-gap: 25px;
+  padding: 10px;
+  max-width: 390px;
+}
+
+.product-card {
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 100px;
+  max-height: 250px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: scale-down;
+}
+
+.product-card h3 {
+  margin: 2px;
+  font-size: 12px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card p {
+  margin: 2px;
+  font-size: 9px;
+}
+
+/* add-button */
+.product-card button.add-button {
+  border: 0px solid;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 9px;
+  font-weight: 500;
+  background-color: #e3a805;
+  color: #ffffff;
+}
+
+/* сам класс всего счетчика и кнопок */
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.product-card button.add-button:hover {
+  background-color: #e3ba49;
+}
+
+.product-card button.add-button:focus {
+  border: none;
+  outline: none;
+}
+
+/* plus-button */
+.product-card button.plus-button {
+  border: 0px solid;
+  border-radius: 10px;
+  width: 33%;
+  font-size: 9px;
+  font-weight: 500;
+  background-color: #e3a805;
+  color: #ffffff;
+  text-align: center
+}
+
+.product-card button.plus-button:hover {
+  background-color: #e3ba49;
+}
+
+.product-card button.plus-button:focus {
+  border: none;
+  outline: none;
+}
+
+/* minus-button */
+.product-card button.minus-button {
+  border: 0px solid;
+  border-radius: 10px;
+  width: 33%;
+  font-size: 9px;
+  font-weight: 500;
+  background-color: #e3a805;
+  color: #ffffff;
+  text-align: center
+}
+
+.product-card button.minus-button:hover {
+  background-color: #e3ba49;
+}
+
+.product-card button.minus-button:focus {
+  border: none;
+  outline: none;
+}
+
+/* текст счетчика */
+.counter-value {
+  font-size: 12px;
+}
