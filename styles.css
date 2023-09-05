@@ -60,7 +60,7 @@ body{
   border: 0px solid;
   border-radius: 5px;
   width: 85%;
-  height: 20px;
+  height: 25px;
   font-size: 9px;
   font-weight: 500;
   background-color: #e3a805;
@@ -93,7 +93,7 @@ body{
   border: 0px solid;
   border-radius: 5px;
   width: 30px;
-  height: 20px;
+  height: 25px;
   font-size: 9px;
   font-weight: 500;
   background-color: #e3a805;
@@ -115,7 +115,7 @@ body{
   border: 0px solid;
   border-radius: 5px;
   width: 30px;
-  height: 20px;
+  height: 25px;
   font-size: 9px;
   font-weight: 500;
   background-color: #d70a0a;
@@ -135,5 +135,5 @@ body{
 /* текст счетчика */
 .counter-value {
   font-size: 12px;
-  line-height: 20px;
+  line-height: 25px;
 }
