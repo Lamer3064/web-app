@@ -7,7 +7,9 @@
   grid-row-gap: 15px;
   column-gap: 25px;
   padding: 10px;
-  max-width: 390px;
+  
+  position: absolute;
+  width: 100%;  
 }
 
 .product-card {
