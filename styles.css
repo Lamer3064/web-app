@@ -57,13 +57,15 @@ body{
 .product-card button.add-button {
   border: 0px solid;
   border-radius: 5px;
-  width: 100%;
+  width: 80%;
   height: 20px;
   font-size: 9px;
   font-weight: 500;
   background-color: #e3a805;
   color: #ffffff;
   margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* сам класс всего счетчика и кнопок */
