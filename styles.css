@@ -44,6 +44,7 @@ body{
   display: -webkit-box;
   overflow: hidden;
   white-space: normal;
+  padding-left: 5px;
 }
 
 .product-card p {
@@ -51,13 +52,14 @@ body{
   font-size: 11px;
   font-weight: 500;
   margin-bottom: 10px;
+  padding-left: 5px;
 }
 
 /* add-button */
 .product-card button.add-button {
   border: 0px solid;
   border-radius: 5px;
-  width: 80%;
+  width: 85%;
   height: 20px;
   font-size: 9px;
   font-weight: 500;
