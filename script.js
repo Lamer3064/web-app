@@ -1,3 +1,8 @@
+let tg = window.Telegram.WebApp;
+tg.expand();
+tg.MainButton.textColor = '#ffffff';
+tg.MainButton.Color = '#68f516';
+
 window.onload = function() {
 	var file = "items.xlsx";
 	var req = new XMLHttpRequest();
@@ -72,6 +77,19 @@ window.onload = function() {
 		  });
 		});
 
+
+
 	}
 	req.send();
 }
+
+const helloElement = document.querySelector('.hello');
+var username = tg.initDataUnsafe?.user.username;
+helloElement.textContent = `Добро пожаловать, ${username}`;
+
+document.addEventListener("click", function (l){
+	if (l.target.closest('.add-button')) {
+		alert('asd')
+	}
+
+});
