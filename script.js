@@ -58,7 +58,7 @@ window.onload = function() {
 			  <button class="plus-button">+</button>
 			`;
 			  
-			tg.MainButton.hide()
+			tg.MainButton.show()
 			addButton.replaceWith(counter);
 
 			const plusButton = counter.querySelector('.plus-button');
@@ -87,6 +87,7 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	const helloElement = document.querySelector('.hello');
-	var username = tg.initDataUnsafe.user.username;
-	helloElement.textContent = `Добро пожаловать, ${username}`;
+	var username1 = tg.initDataUnsafe.user.first_name;
+	var username2 = tg.initDataUnsafe.user.last_name;
+	helloElement.textContent = `Добро пожаловать, ${username1} ${username2}`;
 });
