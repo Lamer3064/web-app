@@ -146,25 +146,8 @@ window.onload = function() {
 			const payload = '123 цифры';
 			const provider_token = '1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46'
 
-		  	// Определяем метод и URL для запроса
-		  	xhr.open('GET', `https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`);
-		  	// Отправляем запрос
-		  	xhr.send();
-		  	console.log(`https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`)
-		  	// Обрабатываем ответ
-		  	xhr.onload = function() {
-				if (xhr.status === 200) {
-			  		// Получаем ответ от API Telegram
-			  		var response = JSON.parse(xhr.responseText);
-
-			  		// Открываем страницу оплаты
-			  		window.location.href = response.result.invoice_url;
-				}
-		  	};
-
-
-
-
+			const url = `https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`;
+		  	window.location.href = url;
 		});
 
 
