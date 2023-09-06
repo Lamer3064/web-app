@@ -12,6 +12,8 @@ window.onload = function() {
 	req.open("GET", file, true);
 	req.responseType = "arraybuffer";
 
+	var counter = 1;
+	var productList = [];
 	req.onload = function(e) {
 		var data = new Uint8Array(req.response);
 		var workbook = XLSX.read(data, {type: "array"});
@@ -24,7 +26,7 @@ window.onload = function() {
 			var allColumnsFilled = row[0] && row[1] && row[2];
 			if (allColumnsFilled) {
 				var productCard = document.createElement("div");
-				productCard.classList.add("product-card");
+				productCard.classList.add("product-card", "product-" + counter);
 
 				var image = document.createElement("img");
 				image.src = row[0];
@@ -45,6 +47,8 @@ window.onload = function() {
 				productCard.appendChild(addButton);
 
 				productGrid.appendChild(productCard);
+
+				counter++;
 			}
 		}
 
@@ -53,6 +57,30 @@ window.onload = function() {
 		// Добавляем обработчик события на каждую кнопку "ADD"
 		addButtons.forEach(function(addButton) {
 		  addButton.addEventListener('click', function() {
+
+
+
+
+
+		    // ******************************************
+			var productCell = this.closest(".product-card");
+			var productName = productCell.querySelector("h3").innerHTML;
+			var productPrice = (productCell.querySelector("p").innerHTML).replace(/\D/g, '');
+			var productCount = 1;
+
+			var product = {
+			  name: productName,
+			  price: productPrice,
+			  count: productCount
+			};
+
+			productList.push(product);
+
+			console.log("Добавили новый товар", productList);
+			// ******************************************
+
+
+
 			const counter = document.createElement('div');
 			counter.classList.add('counter');
 			counter.innerHTML = `
@@ -61,7 +89,7 @@ window.onload = function() {
 			  <button class="plus-button">+</button>
 			`;
 
-			tg.MainButton.show()
+			tg.MainButton.show();
 			addButton.replaceWith(counter);
 
 			const plusButton = counter.querySelector('.plus-button');
@@ -70,14 +98,30 @@ window.onload = function() {
 
 			plusButton.addEventListener('click', function() {
 			  counterValue.textContent = Number(counterValue.textContent) + 1;
+			  product.count++;
+			  console.log("увеличили товар", productList)
 			});
 			minusButton.addEventListener('click', function() {
 			  if (Number(counterValue.textContent) > 1) {
 				counterValue.textContent = Number(counterValue.textContent) - 1;
+
+				product.count--;
+				console.log("уменьшили товар", productList)
+
 			  } else {
 				counter.replaceWith(addButton);
-				tg.MainButton.hide()
-			  }
+				// удаляем элемент
+				for (var i = 0; i < productList.length; i++) {
+					if (productList[i].name === product.name) {
+						productList.splice(i, 1);
+						console.log("удалили товар с названием", product.name, 'и индексом', i);
+						console.log("удалили товар", productList);
+						break; // добавляем break, чтобы прекратить цикл после удаления элемента
+					}
+				}
+			  } else if (productList.length === 0) {
+				tg.MainButton.hide();
+				}
 			});
 		  });
 		});
