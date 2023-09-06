@@ -1,9 +1,12 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
-tg.MainButton.textColor = '#ffffff';
-tg.MainButton.Color = '#68f516';
 
 window.onload = function() {
+
+	tg.MainButton.text = 'Сделать заказ'
+	tg.MainButton.color = '#f7d460'
+	tg.MainButton.textColor = '#ffffff'
+
 	var file = "items.xlsx";
 	var req = new XMLHttpRequest();
 	req.open("GET", file, true);
@@ -57,7 +60,7 @@ window.onload = function() {
 			  <span class="counter-value">1</span>
 			  <button class="plus-button">+</button>
 			`;
-			  
+
 			tg.MainButton.show()
 			addButton.replaceWith(counter);
 
@@ -73,7 +76,7 @@ window.onload = function() {
 				counterValue.textContent = Number(counterValue.textContent) - 1;
 			  } else {
 				counter.replaceWith(addButton);
-				tg.MainButton.hide()  
+				tg.MainButton.hide()
 			  }
 			});
 		  });
