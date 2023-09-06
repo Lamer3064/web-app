@@ -75,8 +75,6 @@ window.onload = function() {
 			};
 
 			productList.push(product);
-
-			console.log("Добавили новый товар", productList);
 			// ******************************************
 
 
@@ -99,15 +97,11 @@ window.onload = function() {
 			plusButton.addEventListener('click', function() {
 			  counterValue.textContent = Number(counterValue.textContent) + 1;
 			  product.count++;
-			  console.log("увеличили товар", productList)
 			});
 			minusButton.addEventListener('click', function() {
 			  if (Number(counterValue.textContent) > 1) {
 				counterValue.textContent = Number(counterValue.textContent) - 1;
-
 				product.count--;
-				console.log("уменьшили товар", productList)
-
 			  } else {
 				counter.replaceWith(addButton);
 				// удаляем элемент
@@ -117,11 +111,9 @@ window.onload = function() {
 						if (productList.length === 0) {
 							tg.MainButton.hide();
 						}
-						// console.log("удалили товар с названием", product.name, 'и индексом', i);
-						// console.log("удалили товар", productList);
 						break; // добавляем break, чтобы прекратить цикл после удаления элемента
 					}
-					
+
 				}
 			  }
 			});
