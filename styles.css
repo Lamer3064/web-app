@@ -5,8 +5,8 @@
 body{
   font-family: 'Open Sans', sans-serif !important;
 
-  color: var(--tg-theme-text-color);
-  background: var(--tg-theme-bg-color); 
+  color: var(--tg-theme-text-color) !important;
+  background: var(--tg-theme-bg-color) !important; 
 }
 
 .product-grid {
