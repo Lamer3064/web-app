@@ -83,10 +83,12 @@ window.onload = function() {
 	req.send();
 }
 
-const helloElement = document.querySelector('.hello');
-// var username = tg.initDataUnsafe?.user.username;
-var username = tg.initDataUnsafe.username;
-helloElement.textContent = `Добро пожаловать, ${username}`;
+document.addEventListener('DOMContentLoaded', function() {
+	const helloElement = document.querySelector('.hello');
+	var username = tg.initDataUnsafe.username;
+	helloElement.textContent = `Добро пожаловать, ${username}`;
+});
+
 
 document.addEventListener("click", function (l){
 	if (l.target.closest('.add-button')) {
