@@ -122,6 +122,59 @@ window.onload = function() {
 
 
 
+
+
+
+
+
+
+
+		const zakaz = document.querySelector('.zakaz');
+		zakaz.addEventListener('click', function() {
+
+			// Создаем XMLHttpRequest для отправки запроса к API Telegram
+		  	var xhr = new XMLHttpRequest();
+
+		  	const api_key = '6590854077:AAFj3mL6BF75PzZ8B1LBjebgyG1NlJb22hE';
+			// const chat_id = tg.initDataUnsafe.user.id;
+			const chat_id = '6067411856';
+			const title_inv = 'Оплата заказа';
+			const descr = 'Оплата товаров в магазине Технологии-будущего';
+			const cur = 'RUB';
+			const pric = [{ "label": "Телефон", "amount": 10000 }];
+			const start_param = 'payment';
+			const payload = '123 цифры';
+			const provider_token = '1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46'
+
+		  	// Определяем метод и URL для запроса
+		  	xhr.open('GET', `https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`);
+		  	// Отправляем запрос
+		  	xhr.send();
+		  	console.log(`https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`)
+		  	// Обрабатываем ответ
+		  	xhr.onload = function() {
+				if (xhr.status === 200) {
+			  		// Получаем ответ от API Telegram
+			  		var response = JSON.parse(xhr.responseText);
+
+			  		// Открываем страницу оплаты
+			  		window.location.href = response.result.invoice_url;
+				}
+		  	};
+
+
+
+
+		});
+
+
+
+
+
+
+
+
+
 	}
 	req.send();
 }
@@ -132,3 +185,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	var username2 = tg.initDataUnsafe.user.last_name;
 	helloElement.textContent = `Добро пожаловать, ${username1} ${username2}`;
 });
+
