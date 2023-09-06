@@ -1,4 +1,4 @@
-let tg = window.Telegram.WebApp;
+const tg = window.Telegram.WebApp;
 tg.expand();
 tg.MainButton.textColor = '#ffffff';
 tg.MainButton.Color = '#68f516';
@@ -84,7 +84,8 @@ window.onload = function() {
 }
 
 const helloElement = document.querySelector('.hello');
-var username = tg.initDataUnsafe?.user.username;
+// var username = tg.initDataUnsafe?.user.username;
+var username = tg.initDataUnsafe.username;
 helloElement.textContent = `Добро пожаловать, ${username}`;
 
 document.addEventListener("click", function (l){
