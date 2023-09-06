@@ -146,8 +146,16 @@ window.onload = function() {
 			const payload = '123 цифры';
 			const provider_token = '1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46'
 
-			const url = `https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`;
-		  	window.location.href = url;
+			  xhr.open('GET', `https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`);
+			  xhr.send();
+			
+			  xhr.onload = function() {
+				if (xhr.status === 200) {
+				  const response = JSON.parse(xhr.responseText);
+				  const invoiceUrl = response.result.invoice_url;
+				  window.location.href = invoiceUrl;
+				}
+			  };
 		});
 
 
