@@ -114,14 +114,16 @@ window.onload = function() {
 				for (var i = 0; i < productList.length; i++) {
 					if (productList[i].name === product.name) {
 						productList.splice(i, 1);
-						console.log("удалили товар с названием", product.name, 'и индексом', i);
-						console.log("удалили товар", productList);
+						if (productList.length === 0) {
+							tg.MainButton.hide();
+						}
+						// console.log("удалили товар с названием", product.name, 'и индексом', i);
+						// console.log("удалили товар", productList);
 						break; // добавляем break, чтобы прекратить цикл после удаления элемента
 					}
+					
 				}
-			  } else if (productList.length === 0) {
-				tg.MainButton.hide();
-				}
+			  }
 			});
 		  });
 		});
