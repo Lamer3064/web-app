@@ -57,7 +57,8 @@ window.onload = function() {
 			  <span class="counter-value">1</span>
 			  <button class="plus-button">+</button>
 			`;
-
+			  
+			tg.MainButton.hide()
 			addButton.replaceWith(counter);
 
 			const plusButton = counter.querySelector('.plus-button');
@@ -72,6 +73,7 @@ window.onload = function() {
 				counterValue.textContent = Number(counterValue.textContent) - 1;
 			  } else {
 				counter.replaceWith(addButton);
+				tg.MainButton.hide()  
 			  }
 			});
 		  });
@@ -85,14 +87,6 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	const helloElement = document.querySelector('.hello');
-	var username = tg.initDataUnsafe.username;
+	var username = tg.initDataUnsafe.user.username;
 	helloElement.textContent = `Добро пожаловать, ${username}`;
-});
-
-
-document.addEventListener("click", function (l){
-	if (l.target.closest('.add-button')) {
-		alert('asd')
-	}
-
 });
