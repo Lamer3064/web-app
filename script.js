@@ -132,7 +132,7 @@ window.onload = function() {
 
 
 
-		tg.WebApp.onEvent('mainButtonClicked', function() {
+		Telegram.WebApp.onEvent('mainButtonClicked', function() {
 			tg.sendData(JSON.stringify(productList));
 			tg.close();
 		});
