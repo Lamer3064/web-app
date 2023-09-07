@@ -130,9 +130,9 @@ window.onload = function() {
 
 
 
-		
-		const zakaz = document.querySelector('.zakaz');
-		zakaz.addEventListener('click', function() {
+
+
+		tg.WebApp.onEvent('mainButtonClicked', function() {
 			tg.sendData(JSON.stringify(productList));
 			tg.close();
 		});
