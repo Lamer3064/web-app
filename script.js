@@ -124,46 +124,38 @@ window.onload = function() {
 
 
 
+		const botToken = '6590854077:AAFj3mL6BF75PzZ8B1LBjebgyG1NlJb22hE'; // токен бота
 
+		function openInvoice() {
+		  const payload = {
+			chat_id: '6067411856',
+			title: 'телефон',
+			description: 'очень стильный',
+			payload: 'оплачено', // Пользовательские данные, которые будут возвращены с уведомлением о платеже
+			provider_token: ' 1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46', // Токен провайдера платежей
+			start_parameter: 'номер заказа 123', // Параметр, передаваемый в приложение провайдера платежей
+			currency: 'RUB',
+			prices: [
+			  { label: 'Цена товара', amount: 10000 } // Цена товара в копейках
+			]
+		  };
 
+		  fetch(`https://api.telegram.org/bot${botToken}/sendInvoice`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload)
+		  })
+			.then(response => response.json())
+			.then(data => console.log(data))
+			.catch(error => console.error(error));
+		}
 
 
 
 		const zakaz = document.querySelector('.zakaz');
-		zakaz.addEventListener('click', function() {
-
-			// Создаем XMLHttpRequest для отправки запроса к API Telegram
-		  	var xhr = new XMLHttpRequest();
-
-		  	const botToken = '6590854077:AAFj3mL6BF75PzZ8B1LBjebgyG1NlJb22hE';
-			// const chatId = tg.initDataUnsafe.user.id;
-			const chatId = '6067411856';
-			const provider_token = '1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46'
+		zakaz.addEventListener('click', openInvoice);
 
 
-			const invoice = {
-			  title: "Название счета",
-			  description: "Описание счета",
-			  currency: "RUB",
-			  prices: [{ label: "Товар", amount: 10000 }],
-			  payload: "ляля тополя"  // Замените <payload> на дополнительные данные, если необходимо
-			};
-
-			fetch(`https://api.telegram.org/bot${botToken}/sendInvoice?chat_id=${chatId}&title=${invoice.title}&description=${invoice.description}&payload=${invoice.payload}&currency=${invoice.currency}&provider_token=${provider_token}&prices=${JSON.stringify(invoice.prices)}`)
-			  .then(response => response.json())
-			  .then(data => {
-				if (data.ok) {
-				  const paymentUrl = data.result.payment_url;
-				  // Заменить текущий URL ссылкой на оплату
-			          window.location.replace(paymentUrl);
-				} else {
-				  console.log("Ошибка при создании счета:", data.description);
-				}
-			  })
-			  .catch(error => {
-				console.log("Ошибка:", error);
-			  });
-		});
 
 
 
