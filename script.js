@@ -154,10 +154,10 @@ window.onload = function() {
 			  .then(data => {
 				if (data.ok) {
 				  const paymentUrl = data.result.payment_url;
-				  // Открыть окно счета в новой вкладке
-				  // window.open(paymentUrl, "_blank");
-				  // Или открыть окно счета в текущей вкладке
-				  window.location.href = paymentUrl;
+				  // Открыть ссылку на оплату в новом окне
+				  window.open(paymentUrl);
+				  // Заменить текущий URL ссылкой на оплату
+			          // window.location.replace(paymentUrl);
 				} else {
 				  console.log("Ошибка при создании счета:", data.description);
 				}
