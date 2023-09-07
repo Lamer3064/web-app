@@ -1,4 +1,4 @@
-const tg = window.Telegram.WebApp;
+let tg = window.Telegram.WebApp;
 tg.expand();
 
 window.onload = function() {
@@ -124,36 +124,18 @@ window.onload = function() {
 
 
 
-		const botToken = '6590854077:AAFj3mL6BF75PzZ8B1LBjebgyG1NlJb22hE'; // токен бота
-
-		function openInvoice() {
-		  const payload = {
-			chat_id: '6067411856',
-			title: 'телефон',
-			description: 'очень стильный',
-			payload: 'оплачено', // Пользовательские данные, которые будут возвращены с уведомлением о платеже
-			provider_token: '1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46', // Токен провайдера платежей
-			start_parameter: 'order123', // Параметр, передаваемый в приложение провайдера платежей
-			currency: 'RUB',
-			prices: [
-			  { label: 'Цена товара', amount: 10000 } // Цена товара в копейках
-			]
-		  };
-
-		  fetch(`https://api.telegram.org/bot${botToken}/sendInvoice`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(payload)
-		  })
-			.then(response => response.json())
-			.then(data => console.log(data))
-			.catch(error => console.error(error));
-		}
 
 
 
+
+
+
+		
 		const zakaz = document.querySelector('.zakaz');
-		zakaz.addEventListener('click', openInvoice);
+		zakaz.addEventListener('click', function() {
+			tg.sendData(JSON.stringify(productList));
+			tg.close();
+		});
 
 
 
