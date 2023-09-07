@@ -135,29 +135,36 @@ window.onload = function() {
 			// Создаем XMLHttpRequest для отправки запроса к API Telegram
 		  	var xhr = new XMLHttpRequest();
 
-		  	const api_key = '6590854077:AAFj3mL6BF75PzZ8B1LBjebgyG1NlJb22hE';
-			// const chat_id = tg.initDataUnsafe.user.id;
-			const chat_id = '6067411856';
-			const title_inv = 'Оплата заказа';
-			const descr = 'Оплата товаров в магазине Технологии-будущего';
-			const cur = 'RUB';
-			const pric = [{ "label": "Телефон", "amount": 10000 }];
-			const start_param = 'payment';
-			const payload = '123 цифры';
+		  	const botToken = '6590854077:AAFj3mL6BF75PzZ8B1LBjebgyG1NlJb22hE';
+			// const chatId = tg.initDataUnsafe.user.id;
+			const chatId = '6067411856';
 			const provider_token = '1832575495:TEST:55275a6a0956cc10245bad6353d6b652ed82166f58a24ad4b63eab04cedb2e46'
 
-			  xhr.open('GET', `https://api.telegram.org/bot${api_key}/sendInvoice?chat_id=${chat_id}&title=${title_inv}&description=${descr}&payload=${payload}&start_parameter=${start_param}&currency=${cur}&prices=${JSON.stringify(pric)}&provider_token=${provider_token}`);
-			  xhr.send();
-			
-			  xhr.onload = function() {
-			    if (xhr.status === 200) {
-			      // Получаем ответ от API Telegram
-			      var response = JSON.parse(xhr.responseText);
-			      
-			      // Открываем страницу оплаты
-			      window.location.href = response.result.invoice_url;
-			    }
-			  };
+
+			const invoice = {
+			  title: "Название счета",
+			  description: "Описание счета",
+			  currency: "RUB",
+			  prices: [{ label: "Товар", amount: 10000 }],
+			  payload: "ляля тополя"  // Замените <payload> на дополнительные данные, если необходимо
+			};
+
+			fetch(`https://api.telegram.org/bot${botToken}/sendInvoice?chat_id=${chatId}&title=${invoice.title}&description=${invoice.description}&payload=${invoice.payload}&currency=${invoice.currency}&provider_token=${provider_token}&prices=${JSON.stringify(invoice.prices)}`)
+			  .then(response => response.json())
+			  .then(data => {
+				if (data.ok) {
+				  const paymentUrl = data.result.payment_url;
+				  // Открыть окно счета в новой вкладке
+				  window.open(paymentUrl, "_blank");
+				  // Или открыть окно счета в текущей вкладке
+				  // window.location.href = paymentUrl;
+				} else {
+				  console.log("Ошибка при создании счета:", data.description);
+				}
+			  })
+			  .catch(error => {
+				console.log("Ошибка:", error);
+			  });
 		});
 
 
