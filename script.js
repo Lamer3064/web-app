@@ -155,9 +155,9 @@ window.onload = function() {
 				if (data.ok) {
 				  const paymentUrl = data.result.payment_url;
 				  // Открыть окно счета в новой вкладке
-				  window.open(paymentUrl, "_blank");
+				  // window.open(paymentUrl, "_blank");
 				  // Или открыть окно счета в текущей вкладке
-				  // window.location.href = paymentUrl;
+				  window.location.href = paymentUrl;
 				} else {
 				  console.log("Ошибка при создании счета:", data.description);
 				}
