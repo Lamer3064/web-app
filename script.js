@@ -150,9 +150,13 @@ window.onload = function() {
 			  xhr.send();
 			
 			  xhr.onload = function() {
-			  	const response = JSON.parse(xhr.responseText);
-			  	const invoiceUrl = response.result.invoice_url;
-			  	window.location.href = invoiceUrl;
+			    if (xhr.status === 200) {
+			      // Получаем ответ от API Telegram
+			      var response = JSON.parse(xhr.responseText);
+			      
+			      // Открываем страницу оплаты
+			      window.location.href = response.result.invoice_url;
+			    }
 			  };
 		});
 
