@@ -150,11 +150,9 @@ window.onload = function() {
 			  xhr.send();
 			
 			  xhr.onload = function() {
-				if (xhr.status === 200) {
-				  const response = JSON.parse(xhr.responseText);
-				  const invoiceUrl = response.result.invoice_url;
-				  window.location.href = invoiceUrl;
-				}
+			  	const response = JSON.parse(xhr.responseText);
+			  	const invoiceUrl = response.result.invoice_url;
+			  	window.location.href = invoiceUrl;
 			  };
 		});
 
